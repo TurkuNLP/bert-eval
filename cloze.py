@@ -245,13 +245,13 @@ if __name__=="__main__":
     import argparse
     argparser = argparse.ArgumentParser(description='')
     argparser.add_argument('--model_directory', required=True, type=str, help='Directory with pytorch_model.bin and config.yaml')
-    argparser.add_argument('--vocab_file', required=True, type=str, help='Name of the vocabulary file.')
+    argparser.add_argument('--vocab_file', required=True, type=str, help='Path to the vocabulary file.')
     argparser.add_argument('--lowercase', default=False, action="store_true", help='Lowercase text (Default: False)')
-    argparser.add_argument('--test_sentences', required=True, type=str, help='Name of the file with test sentences one sentence per line (untokenized raw text).')
-    argparser.add_argument('--min_len', default=5, type=int, help='Minumum sentence length.')
-    argparser.add_argument('--max_len', default=50, type=int, help='Maximum sentence length.')
+    argparser.add_argument('--test_sentences', required=True, type=str, help='File with test sentences one sentence per line (untokenized raw text).')
+    argparser.add_argument('--min_len', default=5, type=int, help='Minumum sentence length used in evaluation (Default: 5 tokens, as counted with whitespace tokenizer)')
+    argparser.add_argument('--max_len', default=50, type=int, help='Maximum sentence length used in evalaution (Default: 50 tokens, as counted with whitespace tokenizer)')
     argparser.add_argument('--max_sentences', default=0, type=int, help='How many sentences to use in evaluation (Default: 0, use all))')
-    argparser.add_argument('--verbose', default=False, action="store_true", help='Print predictions')
+    argparser.add_argument('--verbose', default=False, action="store_true", help='Print the original and predicted sentences.')
     args = argparser.parse_args()
 
     main(args)
