@@ -221,7 +221,7 @@ def main(args):
 
     n_samples = 5
     batch_size = 5
-    max_len = 30
+    max_len = args.mask_len
     top_k = 100
     temperature = 1.0
     generation_mode = args.mode
@@ -256,6 +256,7 @@ if __name__=="__main__":
     argparser.add_argument('--vocab_file', required=True, type=str, help='Name of the vocabulary file.')
     argparser.add_argument('--lowercase', default=False, action="store_true", help='Lowercase text (Default: False)')
     argparser.add_argument('--mode', default="parallel-sequential", choices=["parallel-sequential", "sequential", "parallel"], help='Generation mode')
+    argparser.add_argument('--mask_len', default=30, type=int, help='How many subwords to generate after seed text.')
     args = argparser.parse_args()
 
     main(args)
