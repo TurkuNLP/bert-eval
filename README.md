@@ -12,7 +12,7 @@ Generate text from a given seed.
 
 Usage: `python3 generate.py --model /path/to/mybert-model --vocab /path/to/mybert-model/mybert-model.vocab.wp`
 
-Where `mybert-model` is a directory containing `pytorch_model.bin` and `config.json`.
+Where `mybert-model` is a directory containing `pytorch_model.bin` and `config.json`. Use `--mask_len` to define how many subwords to generate (default is 30).
 
 
 ## Cloze test
