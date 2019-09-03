@@ -3,7 +3,9 @@
 
 ## Requirements
 
-Download treebanks: 
+`pip3 install keras numpy torch pytorch_transformers`
+
+Download treebanks:
 
 `sh dl_data.sh`
 
