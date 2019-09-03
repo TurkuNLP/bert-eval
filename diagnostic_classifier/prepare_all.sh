@@ -1,5 +1,6 @@
 MODEL_DE='bert-base-german-cased'
-MODEL_EN='bert-base-uncased'
+MODEL_EN_U='bert-base-uncased'
+MODEL_EN_C='bert-base-cased'
 MODEL_ALL='bert-base-multilingual-cased'
 
 
@@ -7,9 +8,13 @@ python prepare_classification.py $MODEL_ALL data/UD_English-EWT/en_ewt-ud-train.
 python prepare_classification.py $MODEL_ALL data/UD_English-EWT/en_ewt-ud-dev.conllu data/en_mbert_dev
 python prepare_classification.py $MODEL_ALL data/UD_English-EWT/en_ewt-ud-test.conllu data/en_mbert_test
 
-python prepare_classification.py $MODEL_EN data/UD_English-EWT/en_ewt-ud-train.conllu data/en_train
-python prepare_classification.py $MODEL_EN data/UD_English-EWT/en_ewt-ud-dev.conllu data/en_dev
-python prepare_classification.py $MODEL_EN data/UD_English-EWT/en_ewt-ud-test.conllu data/en_test
+python prepare_classification.py $MODEL_EN_U data/UD_English-EWT/en_ewt-ud-train.conllu data/en_uncased_train
+python prepare_classification.py $MODEL_EN_U data/UD_English-EWT/en_ewt-ud-dev.conllu data/en_uncased_dev
+python prepare_classification.py $MODEL_EN_U data/UD_English-EWT/en_ewt-ud-test.conllu data/en_uncased_test
+
+#python prepare_classification.py $MODEL_EN_C data/UD_English-EWT/en_ewt-ud-train.conllu data/en_cased_train
+#python prepare_classification.py $MODEL_EN_C data/UD_English-EWT/en_ewt-ud-dev.conllu data/en_cased_dev
+#python prepare_classification.py $MODEL_EN_C data/UD_English-EWT/en_ewt-ud-test.conllu data/en_cased_test
 
 python prepare_classification.py $MODEL_ALL data/UD_German-HDT/de_hdt-ud-train-a.conllu data/de_mbert_train
 python prepare_classification.py $MODEL_ALL data/UD_German-HDT/de_hdt-ud-dev.conllu data/de_mbert_dev
