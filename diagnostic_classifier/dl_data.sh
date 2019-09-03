@@ -1,5 +1,6 @@
 #/bin/sh
 
+mkdir data
 cd data
 git clone https://github.com/UniversalDependencies/UD_Danish-DDT.git
 git clone https://github.com/UniversalDependencies/UD_English-EWT.git
