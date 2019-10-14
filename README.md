@@ -1,5 +1,23 @@
-# bert-eval
+# Code for evaluating BERT
 
+This repository contains the code used for the experiments presented in the paper ["Is Multilingual BERT Fluent in Language Generation?"](https://www.aclweb.org/anthology/W19-6204/), and cosists of three tasks of increasing complexity and designed to test the capabilities of BERT with a focus on text generation. The tasks are:
+
+* [Diagonistic classifier: main/non-main auxiliary prediction](https://github.com/TurkuNLP/bert-eval/tree/master/diagnostic_classifier)
+* Cloze test word prediction
+* Sentence generation given left and right-hand context
+
+If you find this useful, please cite our paper as:
+```
+@inproceedings{ronnqvist-2019-bert-eval,
+    title = "Is Multilingual BERT Fluent in Language Generation?",
+    author = "R\"onnqvist, Samuel and Kanerva, Jenna and Salakoski, Tapio and Ginter, Filip",
+    booktitle = "Proceedings of the First NLPL Workshop on Deep Learning for Natural Language Processing",
+    month = oct,
+    year = "2019",
+    address = "Turku, Finland",
+    publisher = "Association for Computational Linguistics"
+}
+```
 
 ## Requirements
 
