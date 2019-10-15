@@ -84,9 +84,11 @@ print()
 data = []
 labels = []
 
+bert.to('cuda')
+
 skips = 0
 for ex in examples:
-    input_ids = torch.tensor([tokenizer.encode(ex['sent'])])
+    input_ids = torch.tensor([tokenizer.encode(ex['sent'])]).to('cuda')
     with torch.no_grad():
         try:
             last_hidden_states = bert(input_ids[:511])[0]  # Models outputs are now tuples
@@ -103,7 +105,7 @@ for ex in examples:
         if word_nr == ex['token_idx']:
             break
 
-    print("Searching:", pieces[piece_idx:])
+    #print("Searching:", pieces[piece_idx:])
     in_token = False
     for pi, p in enumerate(pieces[piece_idx:]):
         if in_token:
@@ -120,17 +122,17 @@ for ex in examples:
     for k,v in ex.items():
         if k=='pieces':
             v = ' '.join(v)
-        print("%s:" % k,v)
+        #print("%s:" % k,v)
 
     for match in matches:
-        print(match)
+        #print(match)
         data.append(last_hidden_states[0][match['piece_idx']])
         labels.append(ex['class'])
 
     if not matches:
-        print("No match.")
+        #print("No match.")
         skips += 1
-    print()
+    #print()
 
 
 print("Skips:", skips, file=sys.stderr)
@@ -138,6 +140,6 @@ print("Input-output pairs:", len(data), file=sys.stderr)
 print("Class 1:", sum(labels), '/', len(labels), "(%.2f%%)" % (sum(labels)/len(labels)*100), file=sys.stderr)
 
 from keras.utils import np_utils
-data = np.array([np.array(x) for x in data])
+data = np.array([np.array(x.cpu()) for x in data])
 np.save(OUT_PREFIX+"_data.npy", data)
 np.save(OUT_PREFIX+"_labels.npy", np_utils.to_categorical(labels))
